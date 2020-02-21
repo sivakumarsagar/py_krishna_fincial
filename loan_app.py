@@ -11,7 +11,7 @@ Features:
 '''
 
 from flask import Flask, render_template, request
-mport sqlite3
+import sqlite3
 import logging
 
 
