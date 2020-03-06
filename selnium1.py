@@ -37,4 +37,4 @@ area.get_attribute('value')
 employment.get_attribute('value')
 
 
-driver.implicitly_wait(300000)
+
