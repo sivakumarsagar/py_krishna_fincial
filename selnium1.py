@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-driver = webdriver.Chrome(r'C:\Python38\chromedriver.exe')
+driver = webdriver.Firefox(r'C:\Python38\geckodriver.exe')
 #browser = webdriver.Firefox()
 #browser.get('http://inventwithpython.com')
 driver.get("http://localhost:5000/application.html")
