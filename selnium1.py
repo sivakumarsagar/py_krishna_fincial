@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-driver = webdriver.Firefox(r'C:\Python38\geckodriver.exe')
+driver = webdriver.Chrome(r'C:\Python38\chromedriver.exe')
 #browser = webdriver.Firefox()
 #browser.get('http://inventwithpython.com')
 driver.get("http://localhost:5000/application.html")
@@ -36,4 +36,7 @@ employment.send_keys('Yes')
 #driver.find_element_by_name("submit").click()
 #form = driver.find_element_by_id('submit')
 #form.submit()
-driver.find_element_by_css_selector("input[name='submit'][value='Submit']").click()
+#driver.find_element_by_css_selector("input[name='submit'][value='Submit']").click()
+submit=WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "submit"))
+  submit.submit()
