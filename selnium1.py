@@ -35,6 +35,8 @@ loan_term.send_keys('0')
 credit_history.send_keys('0')
 area.send_keys('2')
 employment.send_keys('1')
-driver.find_element_by_name("submit").click()
+#driver.find_element_by_name("submit").click()
+form = browser.find_element_by_id('submit')
+form.submit()
 
 
