@@ -30,4 +30,22 @@ driver.find_element_by_css_selector("input[type='radio'][name='employment'][valu
 driver.find_element_by_css_selector("input[type='radio'][name='credit_history'][value='0']").click()
 driver.find_element_by_css_selector("input[type='radio'][name='area'][value='2']").click()
 driver.find_element_by_xpath("//form//input[@type='submit' and @value='Submit']").click()
+
+import sqlite3
+
+# The database will be created in the location where 'py' file is saved
+conn = sqlite3.connect('loan_data.db')  
+c = conn.cursor() 
+
+# Create table - CLIENTS
+c.execute('''CREATE TABLE loan_application ([loanid] INTEGER DEFAULT 1000 PRIMARY KEY AUTOINCREMENT, [name] TEXT, [email]	TEXT, [age] INTEGER, [gender] TEXT,[married] TEXT, [dependents] INTEGER, [education] INTEGER,[employment] INTEGER,[appincome] REAL,[coappincome] REAL, [loan_term] INTEGER,[loan_amount] REAL, [credit_history] INTEGER,[area] TEXT,[loan_status] INTEGER)''')
+conn.commit()
+query = "SELECT * FROM `loan_application` WHERE loanid IN (SELECT max(loanid) FROM `loan_application`)"
+cursor=c.execute(query)
+result = cursor.fetchall() 
+print(type(result))
+if result[0][1] == "Siva Kumar" and result[0][2] == "aa@gmail.com" and result[0][3] == "33" and result[0][4] == "1" and result[0][5] == "0" and result[0][6] == "2" and result[0][7] == "1" and result[0][8] == "1" and result[0][9] == "0" and result[0][10] == "0" and result[0][11] == "0" and result[0][12] == "0" and result[0][13] == "0" and result[0][14] == "2": 
+ delete="DELETE FROM `loan_application` WHERE id = (SELECT MAX(loanid) FROM `loan_application`)"
+ c.execute(delete)
+
 driver.close()
