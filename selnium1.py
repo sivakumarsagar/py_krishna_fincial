@@ -38,7 +38,7 @@ conn = sqlite3.connect('loan_data.db')
 c = conn.cursor() 
 
 # Create table - CLIENTS
-c.execute('''CREATE TABLE loan_application ([loanid] INTEGER DEFAULT 1000 PRIMARY KEY AUTOINCREMENT, [name] TEXT, [email]	TEXT, [age] INTEGER, [gender] TEXT,[married] TEXT, [dependents] INTEGER, [education] INTEGER,[employment] INTEGER,[appincome] REAL,[coappincome] REAL, [loan_term] INTEGER,[loan_amount] REAL, [credit_history] INTEGER,[area] TEXT,[loan_status] INTEGER)''')
+#c.execute('''CREATE TABLE loan_application ([loanid] INTEGER DEFAULT 1000 PRIMARY KEY AUTOINCREMENT, [name] TEXT, [email]	TEXT, [age] INTEGER, [gender] TEXT,[married] TEXT, [dependents] INTEGER, [education] INTEGER,[employment] INTEGER,[appincome] REAL,[coappincome] REAL, [loan_term] INTEGER,[loan_amount] REAL, [credit_history] INTEGER,[area] TEXT,[loan_status] INTEGER)''')
 conn.commit()
 query = "SELECT * FROM `loan_application` WHERE loanid IN (SELECT max(loanid) FROM `loan_application`)"
 cursor=c.execute(query)
