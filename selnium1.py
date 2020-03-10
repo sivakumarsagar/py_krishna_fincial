@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 driver = webdriver.Chrome(r'C:\Python38\chromedriver.exe')
 #browser = webdriver.Firefox()
 #browser.get('http://inventwithpython.com')
-driver.get("http://localhost:5000/")
+driver.get("http://localhost:5000/application.html")
 name=driver.find_element_by_name("name")
 email=driver.find_element_by_name("email")
 age=driver.find_element_by_name("age")
