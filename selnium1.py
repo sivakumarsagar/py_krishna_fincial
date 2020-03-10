@@ -5,6 +5,16 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+
+# The database will be created in the location where 'py' file is saved
+conn = sqlite3.connect('loan_data.db')  
+c = conn.cursor() 
+
+# Create table - CLIENTS
+#c.execute('''CREATE TABLE loan_application ([loanid] INTEGER DEFAULT 1000 PRIMARY KEY AUTOINCREMENT, [name] TEXT, [email]	TEXT, [age] INTEGER, [gender] TEXT,[married] TEXT, [dependents] INTEGER, [education] INTEGER,[employment] INTEGER,[appincome] REAL,[coappincome] REAL, [loan_term] INTEGER,[loan_amount] REAL, [credit_history] INTEGER,[area] TEXT,[loan_status] INTEGER)''')
+conn.commit()
+
+
 driver = webdriver.Chrome(r'C:\Python38\chromedriver.exe')
 #browser = webdriver.Firefox()
 driver.get("http://localhost:5000/application.html")
@@ -31,15 +41,9 @@ driver.find_element_by_css_selector("input[type='radio'][name='credit_history'][
 driver.find_element_by_css_selector("input[type='radio'][name='area'][value='2']").click()
 driver.find_element_by_xpath("//form//input[@type='submit' and @value='Submit']").click()
 
-import sqlite3
 
-# The database will be created in the location where 'py' file is saved
-conn = sqlite3.connect('loan_data.db')  
-c = conn.cursor() 
 
-# Create table - CLIENTS
-#c.execute('''CREATE TABLE loan_application ([loanid] INTEGER DEFAULT 1000 PRIMARY KEY AUTOINCREMENT, [name] TEXT, [email]	TEXT, [age] INTEGER, [gender] TEXT,[married] TEXT, [dependents] INTEGER, [education] INTEGER,[employment] INTEGER,[appincome] REAL,[coappincome] REAL, [loan_term] INTEGER,[loan_amount] REAL, [credit_history] INTEGER,[area] TEXT,[loan_status] INTEGER)''')
-conn.commit()
+
 query = "SELECT * FROM `loan_application` WHERE loanid IN (SELECT max(loanid) FROM `loan_application`)"
 cursor=c.execute(query)
 result = cursor.fetchall() 
