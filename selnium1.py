@@ -48,6 +48,6 @@ driver.find_element_by_css_selector("input[type='radio'][name='credit_history'][
 driver.find_element_by_css_selector("input[type='radio'][name='area'][value='2']").click()
 #submit=WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "submit"))
  # submit.submit()
-driver.find_element_by_xpath("//unique_parent//input[@type='submit' and @value='Submit']").click()
+driver.find_element_by_xpath("//form//input[@type='submit' and @value='Submit']").click()
 #driver.find_element_by_css_selector("input[name='submit'][type='submit'][value='Submit']").click()
 driver.close()
